@@ -1,3 +1,4 @@
-#! /bin/bash
+#!/bin/bash
+
 _mydir="$PWD"
 echo $_mydir
