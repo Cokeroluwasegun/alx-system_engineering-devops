@@ -1,3 +1,2 @@
 #!/bin/bash
-_mydir="$PWD"
-echo $_mydir
+echo "`pwd`"
