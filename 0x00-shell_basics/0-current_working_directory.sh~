@@ -1,7 +1,0 @@
-#! /bin/bash
-
-NAME="Codds"
-echo ${NAME}
-
-_mydir="$(pwd)"
-echo $_mydir
