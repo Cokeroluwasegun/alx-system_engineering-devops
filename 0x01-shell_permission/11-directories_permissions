@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(chmod ugo+x 0x01-shell_permission)"
+sudo chmod -R +111 */

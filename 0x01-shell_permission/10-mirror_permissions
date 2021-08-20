@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(chmod +rw hello olleh)
+chmod --reference=olleh hello
