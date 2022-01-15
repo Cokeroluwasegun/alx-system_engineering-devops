@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Bash script displays To infinity and beyond indefinitely
+$pid;
+$filename;
+filename="/var/run/holbertonscript.pid"
+touch $filename
+echo "$$" > $filename 
+pid=$$
+msgterm()
+{
+if [[ -e $filename ]]; then
+sudo rm /var/run/holbertonscript.pid
+fi
+echo "I hate the kill command"
+kill -9 $pid
+}
+msgint()
+{
+echo "Y U no love me?!"
+}
+sigq()
+{
+if [[ -e $filename ]]; then
+sudo rm /var/run/holbertonscript.pid
+fi
+kill -9 $pid
+}
+trap msgterm SIGTERM
+trap msgint SIGINT
+trap sigq SIGQUIT
+while true; do
+echo "To infinity and beyond"
+done
