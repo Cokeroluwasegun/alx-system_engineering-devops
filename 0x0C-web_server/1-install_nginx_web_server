@@ -3,10 +3,6 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 #change the default nginx index.html to display a string
-sudo ufw allow 'Nginx HTTP'
-sudo chmod -rw  /var/www/html/index.nginx-debian.html
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
-
-nl="\\\tadd_header X-Served-By \$hostname;"
-sudo sed -i -e "/sendfile/i $nl" /etc/nginx/nginx.conf
-sudo service nginx reload
+chown -R $ubuntu:$ubuntu /var/www
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+service nginx restart
