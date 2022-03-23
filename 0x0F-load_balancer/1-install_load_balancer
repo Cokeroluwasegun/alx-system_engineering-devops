@@ -1,17 +1,8 @@
 #!/usr/bin/env bash
-# Install Haproxy and configure it
-# enable a dedicated PPA
-sudo apt-get -y install software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy-1.8
-#update all packages on a machine & install haproxy
-sudo apt-get update
-sudo apt-get -y install haproxy=1.8.\*
-#Adding info to the configuration file
-CFG=/etc/haproxy/haproxy.cfg
-echo listen "1133-lb-01" | sudo tee -a $CFG
-echo "bind 0:80" | sudo tee -a $CFG
-echo "mode http" | sudo tee -a $CFG
-echo "balance roundrobin" | sudo tee -a $CFG
-echo "server 1959-web-01 34.138.112.255 check port 80" | sudo tee -a $CFG
-echo "server 1959-web-02 3.238.112.185 check port 80" | sudo tee -a $CFG
-sudo service haproxy start
+# Install and congigure Haproxy
+add-apt-repository -y ppa:vbernat/haproxy-1.8
+apt-get -y update
+apt-get -y install haproxy
+service haproxy start
+echo -e "listen 1959-lb-01\n\tbind *:80\n\tstats enable\n\tbalance roundrobin\n\tserver 1959-web-01 34.138.112.255 check\n\tserver 1959-web-02 3.238.112.185 check" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
